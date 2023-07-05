@@ -5,24 +5,29 @@ export default function Textform(props) {
   let HandleUClick=()=>{
     let newtext = text.toUpperCase();
     setText(newtext);
+    props.showAlert("Coverted to Upper Case","success");
   }
   let HandleLClick=()=>{
     let newtext = text.toLowerCase();
     setText(newtext);
+    props.showAlert("Coverted to Lower Case","success");
   }
   let HandleClear=()=>{
     let newtext = '';
     setText(newtext);
+    props.showAlert("Removed the  Whole Text","success");
   }
   let HandleCopy=()=>{
     var text = document.getElementById("mytext");
     text.select()
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied the  Whole Text","success");
     
   }
   let HandleExtraSpaces=()=>{
     let newtext = text.split(/[ ]+/);
     setText(newtext.join(" "))
+    props.showAlert("Removed the Extra Spaces","success");
   }
 
 
