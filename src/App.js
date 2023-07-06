@@ -2,8 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
+import About from './components/About';
 import Alert from './components/Alert';
 import React, { useState } from 'react'
+import{
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes}
+  from "react-router-dom";
+
 
 
 function App() {
@@ -39,14 +47,23 @@ function App() {
 
   return (
     <> 
-        <Navbar title="PlaywithText" mode ={mode} toggleMode={toggleMode}/>
-        <Alert alert={alert}/>
-        <div className="container my-3">
-          <Textform showAlert={showAlert} heading="Enter your text below in the box ..." mode={mode}/>
-        </div>
-    </> 
+
+      <Router>
+            <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
+            <Alert alert = {alert}/>  
+            <div className="container my-3">
+              <Routes>   
+                <Route path="/about" element={<About />} />
+                <Route path="/" element={<Textform heading="Enter the text to analyze below" mode={mode} showAlert={showAlert}/>} />
+              </Routes>
+            </div>
+        </Router>
+      </> 
     );
 
 }
 
 export default App;
+
+
+
